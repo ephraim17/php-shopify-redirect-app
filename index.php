@@ -8,11 +8,8 @@ $serializeArray = serialize($request);
 $requests = array_diff_key($requests, array('hmac' => ''));
 ksort($requests);
 
-$token = "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";
+$token = "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";
 $shop = "redirect-to-checkout.myshopify.com";
-
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custome_collection.json", array(), 'GET');
-$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
 
 $array = array(
 	'script_tag' => array(
@@ -26,3 +23,14 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Redirect to checkout</title>
+            <body>
+                <h1> hi </h1>
+            </body>
+        </title>
+    </head>
+</html>
