@@ -19,7 +19,7 @@ $collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
 $array = array(
 	'script_tag' => array(
 		'event' => 'onload', 
-		'src' => 'https://ephraim17.github.io/Blue-Dragonfly/sh.js'
+		'src' => 'https://ephraim17.github.io/Blue-Dragonfly/script.js'
 	)
 );
 
