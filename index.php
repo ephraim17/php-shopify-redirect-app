@@ -1,15 +1,29 @@
 <?php
-
 require_once("inc/functions.php");
 
-$request = $_GET;
+$params = $_GET; 
 $hmac = $_GET['hmac'];
-$serializeArray = serialize($request);
-$requests = array_diff_key($requests, array('hmac' => ''));
-ksort($requests);
+$serializeArray = serialize($params);
+$params = array_diff_key($params, array('hmac' => ''));
+ksort($params);
 
-$token = "";
-$shop = "redirect-to-checkout.myshopify.com";
+$parsedUrl = parse_url('https://'.$params['shop']);
+$host = explode('.', $parsedUrl['host']);
+$subdomain = $host[0];
 
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custome_collection.json", array(), 'GET');
-$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
+$shop = $subdomain;
+$token = "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";
+
+
+$array = array(
+	'script_tag' => array(
+		'event' => 'onload', 
+		'src' => 'https://ephraim17.github.io/Blue-Dragonfly/sh.js'
+	)
+);
+
+$scriptTag = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $array, 'POST');
+$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+
+?>
