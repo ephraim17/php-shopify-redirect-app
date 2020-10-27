@@ -12,7 +12,7 @@ $host = explode('.', $parsedUrl['host']);
 $subdomain = $host[0];
 
 $shop = $subdomain;
-$token = "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";
+$token = "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";
 
 
 $array = array(
