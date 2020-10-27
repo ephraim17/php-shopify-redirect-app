@@ -9,7 +9,9 @@ $requests = array_diff_key($requests, array('hmac' => ''));
 ksort($requests);
 
 $token = "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";
-$shop = "redirect-to-checkout.myshopify.com";
+$subdomain = $host[0];
+$shop = $subdomain;
+//$shop = "redirect-to-checkout.myshopify.com";
 
 $collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custome_collection.json", array(), 'GET');
 $collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
