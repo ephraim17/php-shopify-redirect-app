@@ -34,7 +34,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
     <head>
         <title>Redirect to checkout</title>
             <body>
-                <h1> hi </h1>
+                <h1> hi waddup my dawg</h1>
             </body>
         </title>
     </head>
