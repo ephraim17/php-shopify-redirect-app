@@ -13,7 +13,7 @@ $host = explode('.', $parsedUrl['host']);
 $subdomain = $host[0];
 
 $shop = $subdomain;
-$token = "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";
+$token = "";
 //$shop = "redirect-to-checkout.myshopify.com";
 
 $array = array(
