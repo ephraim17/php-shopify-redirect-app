@@ -23,7 +23,7 @@ $array = array(
 	)
 );
 
-$scriptTag = shopify_call($token, "https://daywalkers-app-test-store.myshopify.com/", "/admin/api/2019-07/script_tags.json", $array, 'POST');
+$scriptTag = shopify_call($token, "https://daywalkers-app-test-store.myshopify.com/", "/admin/api/2020-10/script_tags.json", $array, 'POST');
 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
