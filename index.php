@@ -8,7 +8,7 @@ $serializeArray = serialize($request);
 $requests = array_diff_key($requests, array('hmac' => ''));
 ksort($requests);
 
-$token = "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";
+$token = "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";
 $subdomain = $host[0];
 $shop = $subdomain;
 //$shop = "redirect-to-checkout.myshopify.com";
