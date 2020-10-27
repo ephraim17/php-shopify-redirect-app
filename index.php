@@ -1,19 +1,18 @@
 <?php
+
 require_once("inc/functions.php");
 
-$params = $_GET; 
+$request = $_GET;
 $hmac = $_GET['hmac'];
-$serializeArray = serialize($params);
-$params = array_diff_key($params, array('hmac' => ''));
-ksort($params);
+$serializeArray = serialize($request);
+$requests = array_diff_key($requests, array('hmac' => ''));
+ksort($requests);
 
-$parsedUrl = parse_url('https://'.$params['shop']);
-$host = explode('.', $parsedUrl['host']);
-$subdomain = $host[0];
-
-$shop = $subdomain;
 $token = "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";
+$shop = "redirect-to-checkout.myshopify.com";
 
+$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custome_collection.json", array(), 'GET');
+$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
 
 $array = array(
 	'script_tag' => array(
