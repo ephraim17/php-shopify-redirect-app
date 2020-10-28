@@ -29,3 +29,8 @@ foreach ($collects as $collect) {
 }
 
 ?>
+<html>
+
+    <h1>WHY THE FUCK IS THIS NOT LOAFING?????</h1>
+    
+</html>
