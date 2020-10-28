@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost";
+$host = "php-shopify-app.herokuapp.com";
 $username = "bfdbe3822d6e93";
 $password = "fa50e3e6";
 $dbname = "bfdbe3822d6e93";
