@@ -27,3 +27,5 @@ foreach ($collects as $collect) {
         echo $products['product']['title'] . '<br />';
     }
 }
+
+?>
