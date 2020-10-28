@@ -27,10 +27,16 @@ foreach ($collects as $collect) {
         echo $products['product']['title'] . '<br />';
     }
 }
-
 ?>
-<html>
 
-    <h1>WHY THE FUCK IS THIS NOT LOAFING?????</h1>
-    
-</html>
+<!DOCTYPE html>
+    <html>
+        <body>
+            <script>
+                fetch('http://redirect-to-checkout.com/admin/api/unstable/products.json')
+                .then(response => response.json())
+                .then(data => console.log(data));
+             </script>
+        </body>
+     </html>
+
