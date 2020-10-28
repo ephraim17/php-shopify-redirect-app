@@ -8,7 +8,7 @@ $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
-$token = "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";
+$token = "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";
 $shop = "redirect-to-checkout";
 
 //Product and Product Images
