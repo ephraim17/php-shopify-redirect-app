@@ -1,6 +1,6 @@
 <?php
 
-$host = "mysql://bfdbe3822d6e93:fa50e3e6@eu-cdbr-west-03.cleardb.net/heroku_c9f515d96d37b64?reconnect=true";
+$host = "localhost";
 $username = "bfdbe3822d6e93";
 $password = "fa50e3e6";
 $dbname = "bfdbe3822d6e93";
