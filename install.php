@@ -2,8 +2,8 @@
 
 // Set variables for our request
 $shop = $_GET['shop'];
-$api_key = "70bdfe1c895cdcbf82f069556f38baa0";
-$scopes = "read_orders,write_products";
+$api_key = "b5be2222d87feee2e9148858b8b69725";
+$scopes = "read_customers,write_customers,read_orders,write_products,read_themes,write_themes,write_script_tags";
 $redirect_uri = "https://php-shopify-app.herokuapp.com/generate_token.php";
 
 // Build install/approval URL to redirect to

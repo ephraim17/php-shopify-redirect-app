@@ -1,6 +1,6 @@
-<?php
-
+<?php 
 require_once("inc/functions.php");
+
 
 $requests = $_GET;
 $hmac = $_GET['hmac'];
@@ -9,35 +9,85 @@ $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
 $token = "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";
-$shop = "redirect-to-checkout"; //Should be dynamic
+$shop = "redirect-to-checkout";
 
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custom_collections.json", array(), 'GET');
+//Product and Product Images
+$image = "";
+$title = "";
+
+$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custom-collections.json", array(), 'GET');
 $collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
 $collection_id = $collectionList['custom_collections'][0]['id'];
 
-$array = array("collection_id"=>$collection_id);
-$collects = shopify_call($token, $shop, "/admin/api/2020-10/collects.json", array("collection_id"=>$collection_id), 'GET');
-$collects = json_decode($collets['response'], JSON_PRETTY_PRINT);
+$collects = shopify_call($token, $shop, "/admin/api/2020-10/collects.json", array("collection_id"=>$collection_id), "GET");
+$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
 
 foreach ($collects as $collect) {
-    foreach ($collects as $key => $value) {
-        $products = shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['product_id'] . ".json", array(), 'GET');
-        $products = json_decode($products['response'], JSON_PRETTY_PRINT);
+	foreach($collect as $key => $value) {
+		$products = shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['product_id'] . ".json", array(), "GET");
+		$products = json_decode($products['response'], JSON_PRETTY_PRINT);
 
-        echo $products['product']['title'] . '<br />';
-    }
+		$images = shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['product_id'] . "/images.json", array(), "GET");
+		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
+
+
+		 $image = $images['images'][0]['src'];
+         $title = $products['product']['title'];
+
+	}
 }
-?>
 
-<!DOCTYPE html>
-    <html>
-        <body>
-            <h1>WHY THE  FUCKKKK</h1>
-            <script>
-                fetch('http://redirect-to-checkout.com/admin/api/unstable/products.json')
-                .then(response => response.json())
-                .then(data => console.log(data));
-             </script>
-        </body>
-     </html>
+// Based on 4th video
+$theme = shopify_call($token, $shop, "/admin/api/2020-10/themes.json", array(), "GET");
+$theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
+echo print_r($theme);
+
+foreach ($theme as $curr_theme) {
+	foreach($curr_theme as $key => $value) {
+		if($value['role'] === 'main') {
+
+			echo "Theme ID: " . $value['id'] . "<br/>";
+			echo "Theme Name: " . $value['name'] . "<br/>";
+
+			/*$array = array(
+   				"asset" => array(
+ 					"key" => "templates/index.liquid",
+ 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
+   				)
+			);*/
+
+			$assets = shopify_call($token, $shop, "/admin/api/2020-10/themes/" . $value['id'] . "/assets.json", $array, "PUT");
+		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
+
+		}
+	}
+}
+
+
+
+$script_array = array(
+ 	"script_tag" => array(
+ 	"event" => "onload",
+ 	"src" => "https://ephraim17.github.io/Blue-Dragonfly/script.js"
+ )
+);
+
+$scriptTag = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
+$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+
+
+ ?>
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title>Shopify Example App</title>
+ </head>
+ <body>
+ 	<h1>Shopify Example App V2</h1>
+ 	<img src="<?php echo $image; ?>" style="width:250px;">
+ 	<p><?php echo $title; ?></p>
+ </body>
+ </html>
