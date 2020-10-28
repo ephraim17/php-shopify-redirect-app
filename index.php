@@ -32,6 +32,7 @@ foreach ($collects as $collect) {
 <!DOCTYPE html>
     <html>
         <body>
+            <h1>WHY THE  FUCKKKK</h1>
             <script>
                 fetch('http://redirect-to-checkout.com/admin/api/unstable/products.json')
                 .then(response => response.json())
