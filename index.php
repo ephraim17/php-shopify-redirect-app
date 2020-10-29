@@ -16,9 +16,6 @@ $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' 
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
-echo $row['store_url'];
-echo $row['access_token'];
-
 //Product and Product Images
 $image = "";
 $title = "";
@@ -81,7 +78,7 @@ $script_array = array(
  )
 );
 
-$scriptTag = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
+$scriptTag = shopify_call($token, $shop, "/admin/api/unstable/script_tags.json", $script_array, "POST");
 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
