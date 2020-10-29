@@ -1,5 +1,6 @@
 <?php 
 require_once("inc/functions.php");
+require_once("inc/connect.php");
 
 
 $requests = $_GET;
@@ -10,6 +11,13 @@ ksort($requests);
 
 $token = "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";
 $shop = "redirect-to-checkout";
+
+$sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
+$result = mysqli_query( $conn, $sql );
+$row = mysqli_fetch_assoc($result);
+
+echo $row['store_url'];
+echo $row['access_token'];
 
 //Product and Product Images
 $image = "";
