@@ -2,12 +2,15 @@
 
 // Get our helper functions
 require_once("inc/functions.php");
+require_once("inc/connect.php");
 
 // Set variables for our request
 $api_key = "70bdfe1c895cdcbf82f069556f38baa0";
 $shared_secret = "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";
 $params = $_GET; // Retrieve all request parameters
 $hmac = $_GET['hmac']; // Retrieve HMAC request parameter
+
+$shop_url = $params['shop'];
 
 $params = array_diff_key($params, array('hmac' => '')); // Remove hmac from params
 ksort($params); // Sort params lexographically
@@ -41,7 +44,20 @@ if (hash_equals($hmac, $computed_hmac)) {
 	$access_token = $result['access_token'];
 
 	// Show the access token (don't do this in production!)
-	echo $access_token;
+	//echo $access_token;
+
+	$sql = "INSERT INTO php-shopify-app (store_url, access_token, install_date) VALUE ( '" . $shop_url . "', '" . $access_token . "', NOW())";
+
+		if ( mysqli_query( $conn, $sql ) ) {
+			header('Location: https://' . $shop_url . '/admin/apps/php-my-app');
+			exit();
+		}
+
+		else {
+
+			echo "Error Installation " . mysqli_error( $conn );
+
+		}
 
 } else {
 	// Someone is trying to be shady!
