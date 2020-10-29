@@ -9,7 +9,7 @@ $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
-$token = "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";
+$token = "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";
 $shop = "redirect-to-checkout";
 
 $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
