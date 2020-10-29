@@ -17,6 +17,7 @@ $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
 //Product and Product Images
+/*
 $image = "";
 $title = "";
 
@@ -61,14 +62,14 @@ foreach ($theme as $curr_theme) {
  					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
    				)
 			);*/
-
+/*
 			$assets = shopify_call($token, $shop, "/admin/api/2020-10/themes/" . $value['id'] . "/assets.json", $array, "PUT");
 		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
 
 		}
 	}
 }
-
+*/
 
 
 $script_array = array(
