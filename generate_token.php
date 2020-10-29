@@ -46,18 +46,19 @@ if (hash_equals($hmac, $computed_hmac)) {
 	// Show the access token (don't do this in production!)
 	//echo $access_token;
 
-	$sql = "INSERT INTO php-shopify-app (store_url, access_token, install_date) VALUE ( '" . $shop_url . "', '" . $access_token . "', NOW())";
+	$sql = "INSERT INTO example_table (store_url, access_token, install_date)
+	VALUES ('".$params['shop']."', '".$access_token."', NOW())";
 
-		if ( mysqli_query( $conn, $sql ) ) {
-			header('Location: https://' . $shop_url . '/admin/apps/php-my-app');
-			exit();
-		}
-
-		else {
-
-			echo "Error Installation " . mysqli_error( $conn );
-
-		}
+	if (mysqli_query($conn, $sql)) {
+	
+		header('Location: https://'.$params['shop'].'/admin/apps');
+		die();
+	
+	} else {
+	
+		echo "Error inserting new record: " . mysqli_error($conn);
+	
+	}
 
 } else {
 	// Someone is trying to be shady!
