@@ -24,6 +24,7 @@ $var = "Hello, I am string";
 echo $var;
 echo $row['access_token'];
 echo $row['store_url'];
+echo str_replace(".myshopify.com", "", $row['store_url']);
 
 //Product and Product Images
 $image = "";
