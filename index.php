@@ -41,14 +41,14 @@ foreach ($collects as $collect) {
 $theme = shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), "GET");
 $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
-echo print_r($theme);
+//echo print_r($theme);
 
 foreach ($theme as $curr_theme) {
 	foreach($curr_theme as $key => $value) {
 		if($value['role'] === 'main') {
 
-			echo "Theme ID: " . $value['id'] . "<br/>";
-			echo "Theme Name: " . $value['name'] . "<br/>";
+			//echo "Theme ID: " . $value['id'] . "<br/>";
+			//echo "Theme Name: " . $value['name'] . "<br/>";
 
 			/*$array = array(
    				"asset" => array(
