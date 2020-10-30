@@ -19,7 +19,7 @@ $row = mysqli_fetch_assoc($result);
 $token1 = $row['access_token'];
 $shop1 = $row['store_url'];
 
-$var = "Hello, I am string";
+$var = "Hello, I am string using replaced ";
 
 echo $var;
 echo $row['access_token'];
