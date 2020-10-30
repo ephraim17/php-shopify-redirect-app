@@ -9,16 +9,21 @@ $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
+$token = "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";
+$shop = "redirect-to-checkout";
+
 $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
-$token = $row['access_token'];
-$shop = $row['store_url'];
+$token1 = $row['access_token'];
+$shop1 = $row['store_url'];
 
-echo $shop['access_token'];
-echo $token['store_url'];
+$var = "Hello, I am string";
 
+echo $var;
+echo $row['access_token'];
+echo $row['store_url'];
 
 //Product and Product Images
 $image = "";
@@ -95,7 +100,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
  	<title>Shopify Example App</title>
  </head>
  <body>
- 	<h1>Shopify Examplee App</h1>
+ 	<h1>Shopify Example App</h1>
  	<img src="<?php echo $image; ?>" style="width:250px;">
  	<p><?php echo $title; ?></p>
  </body>
