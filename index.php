@@ -1,5 +1,6 @@
 <?php 
 require_once("inc/functions.php");
+require_once("inc/connect.php");
 
 
 $requests = $_GET;
@@ -93,15 +94,11 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Shopify Example A2pp</title>
+ 	<title>Shopify Example App</title>
  </head>
  <body>
  	<h1>Shopify Example App</h1>
  	<img src="<?php echo $image; ?>" style="width:250px;">
  	<p><?php echo $title; ?></p>
-	 
-	 <script>
-		 console.log('This is my location ' + location.href);
-	 </script>
  </body>
  </html>
