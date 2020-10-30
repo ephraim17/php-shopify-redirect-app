@@ -9,8 +9,8 @@ $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
-$token = "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";
-$shop = "redirect-to-checkout";
+$token = $row['access_token'];
+$shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
 $result = mysqli_query( $conn, $sql );
