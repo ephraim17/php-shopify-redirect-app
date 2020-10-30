@@ -16,7 +16,8 @@ $row = mysqli_fetch_assoc($result);
 $token = $row['access_token'];
 $shop = $row['store_url'];
 
-
+echo $shop['access_token'];
+echo $token['store_url'];
 
 
 //Product and Product Images
