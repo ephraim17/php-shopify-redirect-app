@@ -33,7 +33,7 @@ $recurring_array = array(
 	$recurring_charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_chargea_json", $recurring_array, "POST");
 	$recurring_charge = json_decode($recurring_charge['response'], JSON_PRETTY_PRINT);
 
-	echo '<script>top.window.location = "'. $recurring_charge['recurring_application_charge']['confirmation_url'] .'"</script>'
+	echo '<script>top.window.location = "'. $recurring_charge['recurring_application_charge']['confirmation_url'] .'"</script>';
 
 
 
