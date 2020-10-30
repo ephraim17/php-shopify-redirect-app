@@ -27,20 +27,23 @@ echo $row['store_url'];
 echo str_replace(".myshopify.com", "", $row['store_url']);
 
 
-$recurring_array = array(
-	"recurring_application_charge" => array(
-		"name" => "Redirect To Checkout",
-		"price" => 4.99,
-		"test" => true,
-		"return_url" => "https://" . $row['store_url'] . "/admin/apps/php-my-app/?" . $_SERVER['QUERY_STRING']
+$array = array(
+	'recurring_application_charge' => array(
+		'name' => 'Example Plan',
+		'test' => true,  //remove this line before sending to app store
+		'price' => 4.99,
+		'return_url' => "https://" . $row['store_url'] . "/admin/apps/php-my-app/?" . $_SERVER['QUERY_STRING']
 	)
 );
 
-$recurring_charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $recurring_array, "POST");
-$recurring_charge = json_decode( $recurring_charge['response'], JSON_PRETTY_PRINT);
 
-echo '<script>top.window.location = "'. $recurring_charge['recurring_application_charge']['confirmation_url'] .'"</script>';
-die;
+
+$charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $array, 'POST');
+$charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
+
+
+header('Location: ' . $charge['recurring_application_charge']['confirmation_url'] );
+exit();
 
 //Product and Product Images
 $image = "";
