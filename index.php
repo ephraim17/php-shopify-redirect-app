@@ -98,7 +98,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Shopify Example App</title>
+ 	<title>Replaced Shopify Example App</title>
  </head>
  <body>
  	<h1>Shopify Example App</h1>
