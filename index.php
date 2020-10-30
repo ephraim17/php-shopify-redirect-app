@@ -16,6 +16,15 @@ $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' 
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
+$token1 = $row['access_token'];
+$shop1 = $row['store_url'];
+
+$var = "Hello, I am string";
+
+echo $var;
+echo $row['access_token'];
+echo $row['store_url'];
+
 //Product and Product Images
 $image = "";
 $title = "";
@@ -35,7 +44,7 @@ foreach ($collects as $collect) {
 		$images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
 		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
 
-         
+
 		 $image = $images['images'][0]['src'];
          $title = $products['product']['title'];
 
@@ -46,21 +55,23 @@ foreach ($collects as $collect) {
 $theme = shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), "GET");
 $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
+//echo print_r($theme);
+
 foreach ($theme as $curr_theme) {
 	foreach($curr_theme as $key => $value) {
 		if($value['role'] === 'main') {
 
-			echo "Theme ID: " . $value['id'] . "<br/>";
-			echo "Theme Name: " . $value['name'] . "<br/>";
+			//echo "Theme ID: " . $value['id'] . "<br/>";
+			//echo "Theme Name: " . $value['name'] . "<br/>";
 
-			$array = array(
+			/*$array = array(
    				"asset" => array(
  					"key" => "templates/index.liquid",
- 					"value" => "Hello Wordl from WeeklyHow"
+ 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
    				)
-			);
+			);*/
 
-			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", array(), "PUT");
+			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", $array, "PUT");
 		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
 
 		}
@@ -94,3 +105,4 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
  	<p><?php echo $title; ?></p>
  </body>
  </html>
+
