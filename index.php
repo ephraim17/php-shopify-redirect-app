@@ -93,7 +93,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Shopify Example App</title>
+ 	<title>Shopify Example A2pp</title>
  </head>
  <body>
  	<h1>Shopify Example App</h1>
