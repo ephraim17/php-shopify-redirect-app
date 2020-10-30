@@ -9,9 +9,6 @@ $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
 ksort($requests);
 
-$token = $row['access_token'];
-$shop = str_replace(".myshopify.com", "", $row['store_url']);
-
 $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
@@ -20,6 +17,9 @@ $token1 = $row['access_token'];
 $shop1 = $row['store_url'];
 
 $var = "Hello, I am string using replaced ";
+
+$token = $row['access_token'];
+$shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 echo $var;
 echo $row['access_token'];
