@@ -51,7 +51,7 @@ if (hash_equals($hmac, $computed_hmac)) {
 
 	if (mysqli_query($conn, $sql)) {
 	
-		header('Location: https://'.$params['shop'].'/admin/apps');
+		header('Location: https://'.$params['shop'].'/admin/apps/php-my-app');
 		die();
 	
 	} else {
