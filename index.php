@@ -107,6 +107,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 <style>
 .center {
   text-align: center;
+  top:50%;
 }
 </style>
 
