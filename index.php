@@ -26,7 +26,6 @@ echo $row['access_token'];
 echo $row['store_url'];
 echo str_replace(".myshopify.com", "", $row['store_url']);
 
-
 $recurring_array = array(
 	'recurring_application_charge' => array(
 		'name' => 'Example Plan',
@@ -38,77 +37,41 @@ $recurring_array = array(
 
 
 
-$charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $recurring_array, 'POST');
-$charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
+$recurring_charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $recurring_array, 'POST');
+$recurring_charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
 
+echo '<script>top.window.location - "'. $recurring_charge['recurring_application_charge']['confirmation_url'].'"</script>';
+die;
+// if( isset($_GET['charge_id']) && $_GET['charge_id'] != '' ) {
+// 	$charge_id = $_GET['charge_id'];
 
-header('Location: ' . $charge['recurring_application_charge']['confirmation_url'] );
-exit();
+// 	$array = array(
+// 		'recurring_application_charge' => array(
+// 			"id" => $charge_id,
+// 		    "name" => "Example Plan",
+// 		    "api_client_id" => rand(1000000, 9999999),
+// 		    "price" => "1.00",
+// 		    "status" => "accepted",
+// 		    "return_url" => "https://weeklyhow.myshopfy.com/admin/apps/exampleapp-14",
+// 		    "billing_on" => null,
+// 		    "test" => true,
+// 		    "activated_on" => null,
+// 		    "trial_ends_on" => null,
+// 		    "cancelled_on" => null,
+// 		    "trial_days" => 0,
+// 		    "decorated_return_url" => "https://weeklyhow.myshopfy.com/admin/apps/exampleapp-14/?charge_id=" . $charge_id
+// 		)
+// 	);
 
-//Product and Product Images
-$image = "";
-$title = "";
+// 	$activate = shopify_call($token, $shop, "/admin/api/2019-10/recurring_application_charges/".$charge_id."/activate.json", $array, 'POST');
+// 	$activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
 
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
-$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
-$collection_id = $collectionList['custom_collections'][0]['id'];
+// 	print_r($activate);
+	
+// }
 
-$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
-$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
+//Idea Index check if charge id exists. Index is just a redirecting page.
 
-foreach ($collects as $collect) {
-	foreach($collect as $key => $value) {
-		$products = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . ".json", array(), "GET");
-		$products = json_decode($products['response'], JSON_PRETTY_PRINT);
-
-		$images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
-		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
-
-
-		 $image = $images['images'][0]['src'];
-         $title = $products['product']['title'];
-
-	}
-}
-
-// Based on 4th video
-$theme = shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), "GET");
-$theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
-
-//echo print_r($theme);
-
-foreach ($theme as $curr_theme) {
-	foreach($curr_theme as $key => $value) {
-		if($value['role'] === 'main') {
-
-			//echo "Theme ID: " . $value['id'] . "<br/>";
-			//echo "Theme Name: " . $value['name'] . "<br/>";
-
-			/*$array = array(
-   				"asset" => array(
- 					"key" => "templates/index.liquid",
- 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
-   				)
-			);*/
-
-			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", $array, "PUT");
-		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
-
-		}
-	}
-}
-
-
-
-$script_array = array(
- 	"script_tag" => array(
- 	"event" => "onload",
- 	"src" => "https://ephraim17.github.io/Blue-Dragonfly/script.js"
- )
-);
-
-$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
 
