@@ -21,57 +21,70 @@ $var = "Hello, I am string using replaced ";
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-echo $var;
-echo $row['access_token'];
-echo $row['store_url'];
-echo str_replace(".myshopify.com", "", $row['store_url']);
+//Product and Product Images
+$image = "";
+$title = "";
 
-$recurring_array = array(
-	'recurring_application_charge' => array(
-		'name' => 'Example Plan',
-		'test' => true,  //remove this line before sending to app store
-		'price' => 4.99,
-		'return_url' => "https://" . $row['store_url'] . "/admin/apps/php-my-app/?" . $_SERVER['QUERY_STRING']
-	)
+$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
+$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
+$collection_id = $collectionList['custom_collections'][0]['id'];
+
+$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
+$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
+
+foreach ($collects as $collect) {
+	foreach($collect as $key => $value) {
+		$products = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . ".json", array(), "GET");
+		$products = json_decode($products['response'], JSON_PRETTY_PRINT);
+
+		$images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
+		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
+
+
+		 $image = $images['images'][0]['src'];
+         $title = $products['product']['title'];
+
+	}
+}
+
+// Based on 4th video
+$theme = shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), "GET");
+$theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
+
+//echo print_r($theme);
+
+foreach ($theme as $curr_theme) {
+	foreach($curr_theme as $key => $value) {
+		if($value['role'] === 'main') {
+
+			//echo "Theme ID: " . $value['id'] . "<br/>";
+			//echo "Theme Name: " . $value['name'] . "<br/>";
+
+			/*$array = array(
+   				"asset" => array(
+ 					"key" => "templates/index.liquid",
+ 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
+   				)
+			);*/
+
+			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", $array, "PUT");
+		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
+
+		}
+	}
+}
+
+
+
+$script_array = array(
+ 	"script_tag" => array(
+ 	"event" => "onload",
+ 	"src" => "https://ephraim17.github.io/Blue-Dragonfly/script.js"
+ )
 );
 
-
-
-$recurring_charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $recurring_array, 'POST');
-$recurring_charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
-
-echo '<script>top.window.location - "'. $recurring_charge['recurring_application_charge']['confirmation_url'].'"</script>';
-die;
-// if( isset($_GET['charge_id']) && $_GET['charge_id'] != '' ) {
-// 	$charge_id = $_GET['charge_id'];
-
-// 	$array = array(
-// 		'recurring_application_charge' => array(
-// 			"id" => $charge_id,
-// 		    "name" => "Example Plan",
-// 		    "api_client_id" => rand(1000000, 9999999),
-// 		    "price" => "1.00",
-// 		    "status" => "accepted",
-// 		    "return_url" => "https://weeklyhow.myshopfy.com/admin/apps/exampleapp-14",
-// 		    "billing_on" => null,
-// 		    "test" => true,
-// 		    "activated_on" => null,
-// 		    "trial_ends_on" => null,
-// 		    "cancelled_on" => null,
-// 		    "trial_days" => 0,
-// 		    "decorated_return_url" => "https://weeklyhow.myshopfy.com/admin/apps/exampleapp-14/?charge_id=" . $charge_id
-// 		)
-// 	);
-
-// 	$activate = shopify_call($token, $shop, "/admin/api/2019-10/recurring_application_charges/".$charge_id."/activate.json", $array, 'POST');
-// 	$activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
-
-// 	print_r($activate);
-	
-// }
-
-//Idea Index check if charge id exists. Index is just a redirecting page.
-
+$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
 
@@ -81,10 +94,14 @@ die;
  <html>
  <head>
  	<title>Replaced Shopify Example App</title>
+	 <link
+  rel="stylesheet"
+  href="https://unpkg.com/@shopify/polaris@5.0.0/dist/styles.css"
+/>
  </head>
  <body>
- 	<h1>Shopify Example App</h1>
- 	<img src="<?php echo $image; ?>" style="width:250px;">
- 	<p><?php echo $title; ?></p>
+ 	<h1>This app is now redirecting users to checkout</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.542 1.487A21.507 21.507 0 00.5 22c0 11.874 9.626 21.5 21.5 21.5 9.847 0 18.364-6.675 20.809-16.072a1.5 1.5 0 00-2.904-.756C37.803 34.755 30.473 40.5 22 40.5 11.783 40.5 3.5 32.217 3.5 22c0-8.137 5.3-15.247 12.942-17.65a1.5 1.5 0 10-.9-2.863z"></path>
+    </svg></span><span role="status"><span class="Polaris-VisuallyHidden">Spinner example</span></span></div>
  </body>
  </html>
