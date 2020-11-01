@@ -1,5 +1,6 @@
 <?php 
 require_once("inc/functions.php");
+require_once("inc/connect.php");
 
 
 $requests = $_GET;
