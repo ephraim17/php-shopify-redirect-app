@@ -49,8 +49,8 @@ foreach ($theme as $curr_theme) {
 	foreach($curr_theme as $key => $value) {
 		if($value['role'] === 'main') {
 
-			// echo "Theme ID: " . $value['id'] . "<br/>";
-			// echo "Theme Name: " . $value['name'] . "<br/>";
+			echo "Theme ID: " . $value['id'] . "<br/>";
+			echo "Theme Name: " . $value['name'] . "<br/>";
 
 			$array = array(
    				"asset" => array(
