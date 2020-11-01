@@ -5,8 +5,8 @@ require_once("inc/functions.php");
 require_once("inc/connect.php");
 
 // Set variables for our request
-$api_key = "70bdfe1c895cdcbf82f069556f38baa0";
-$shared_secret = "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";
+$api_key = getenv('SHOPIFY_API_KEY');
+$shared_secret = getenv('SHOPIFY_SHARED_SECRET');
 $params = $_GET; // Retrieve all request parameters
 $hmac = $_GET['hmac']; // Retrieve HMAC request parameter
 
