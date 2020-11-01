@@ -54,7 +54,7 @@ foreach ($collects as $collect) {
 
 		}
 	}
-}
+
 
 
 
