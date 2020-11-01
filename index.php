@@ -16,9 +16,6 @@ $row = mysqli_fetch_assoc($result);
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-echo $row['access_token'];
-echo $row['store_url'];
-
 //Product and Product Images
 $image = "";
 $title = "";
@@ -35,7 +32,7 @@ $script_array = array(
 
 $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-
+$scriptTag
 
 
  ?>
