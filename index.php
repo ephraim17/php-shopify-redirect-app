@@ -23,38 +23,6 @@ echo $row['store_url'];
 $image = "";
 $title = "";
 
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
-$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
-$collection_id = $collectionList['custom_collections'][0]['id'];
-
-$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
-$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
-
-foreach ($collects as $collect) {
-	foreach($collect as $key => $value) {
-		$products = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . ".json", array(), "GET");
-		$products = json_decode($products['response'], JSON_PRETTY_PRINT);
-
-		$images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
-		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
-
-
-			//echo "Theme ID: " . $value['id'] . "<br/>";
-			//echo "Theme Name: " . $value['name'] . "<br/>";
-
-			/*$array = array(
-   				"asset" => array(
- 					"key" => "templates/index.liquid",
- 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
-   				)
-			);*/
-
-			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", $array, "PUT");
-		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
-
-		}
-	}
-
 
 
 
