@@ -18,9 +18,6 @@ $shop1 = $row['store_url'];
 
 $var = "Hello, I am string using replaced ";
 
-$token = "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";
-$shop = "redirect-to-checkout";
-
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
