@@ -13,16 +13,11 @@ $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' 
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
-$token1 = $row['access_token'];
-$shop1 = $row['store_url'];
-
 $var = "Hello, I am string using replaced ";
 
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-echo $token;
-echo $shop;
 
 //Product and Product Images
 $image = "";
