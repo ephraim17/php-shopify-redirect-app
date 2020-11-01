@@ -16,59 +16,47 @@ $row = mysqli_fetch_assoc($result);
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-echo $token;
-echo $shop;
+echo $row['access_token'];
+echo $row['store_url'];
 
 //Product and Product Images
 $image = "";
 $title = "";
 
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-10/custom-collections.json", array(), 'GET');
+$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
 $collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
 $collection_id = $collectionList['custom_collections'][0]['id'];
 
-$collects = shopify_call($token, $shop, "/admin/api/2020-10/collects.json", array("collection_id"=>$collection_id), "GET");
+$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
 $collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
 
 foreach ($collects as $collect) {
 	foreach($collect as $key => $value) {
-		$products = shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['product_id'] . ".json", array(), "GET");
+		$products = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . ".json", array(), "GET");
 		$products = json_decode($products['response'], JSON_PRETTY_PRINT);
 
-		$images = shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['product_id'] . "/images.json", array(), "GET");
+		$images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
 		$images = json_decode($images['response'], JSON_PRETTY_PRINT);
 
-         
-		 $image = $images['images'][0]['src'];
-         $title = $products['product']['title'];
 
-	}
-}
+			//echo "Theme ID: " . $value['id'] . "<br/>";
+			//echo "Theme Name: " . $value['name'] . "<br/>";
 
-// Based on 4th video
-$theme = shopify_call($token, $shop, "/admin/api/2020-10/themes.json", array(), "GET");
-$theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
-
-foreach ($theme as $curr_theme) {
-	foreach($curr_theme as $key => $value) {
-		if($value['role'] === 'main') {
-
-			echo "Theme ID: " . $value['id'] . "<br/>";
-			echo "Theme Name: " . $value['name'] . "<br/>";
-
-			$array = array(
+			/*$array = array(
    				"asset" => array(
  					"key" => "templates/index.liquid",
- 					"value" => "Hello Wordl from WeeklyHow"
+ 					"value" => "<script>document.querySelector('.h1').innerText = 'SHOPIFY 10';</script>"
    				)
-			);
+			);*/
 
-			$assets = shopify_call($token, $shop, "/admin/api/2020-10/themes/" . $value['id'] . "/assets.json", array(), "PUT");
+			$assets = shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $value['id'] . "/assets.json", $array, "PUT");
 		    $assets = json_decode($assets['response'], JSON_PRETTY_PRINT);
 
 		}
 	}
 }
+
+
 
 $script_array = array(
  	"script_tag" => array(
@@ -77,8 +65,9 @@ $script_array = array(
  )
 );
 
-$scriptTag = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
+$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
 
 
  ?>
