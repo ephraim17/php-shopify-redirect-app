@@ -1,6 +1,6 @@
 <?php
 
-$host = "eu-cdbr-west-03.cleardb.net";
+$host = getenv('DB_Host');
 $username = getenv('DB_Username');
 $password = getenv('DB_Password');
 $dbname = getenv('DB_Name');
