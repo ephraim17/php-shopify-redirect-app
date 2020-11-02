@@ -3,7 +3,7 @@
 $host = "eu-cdbr-west-03.cleardb.net";
 $username = getenv('DB_Username');
 $password = getenv('DB_Password');
-$dbname = "heroku_c9f515d96d37b64";
+$dbname = getenv('DB_Name');
 
 $conn = mysqli_connect( $host, $username, $password, $dbname );
 
