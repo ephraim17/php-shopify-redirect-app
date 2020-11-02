@@ -17,4 +17,5 @@ $data = file_get_contents('php://input');
 $verified = verify_webhook($data, $hmac_header);
 error_log('Webhook verified: '.var_export($verified, true)); //check error.log to see the result
 
+echo 'Hello world';
 
