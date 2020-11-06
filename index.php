@@ -18,7 +18,7 @@ $var = "Hello, I am string using replaced ";
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-if ($token = false) {
+if (empty($token)) {
 
 	header("Location: install.php?shop=" . $requests['shop']);
   } 
