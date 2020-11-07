@@ -78,6 +78,13 @@ foreach ($theme as $curr_theme) {
 
 
 
+// $scriptTag_check = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
+// $scriptTag_check = json_decode($scriptTag_check['response'], JSON_PRETTY_PRINT);
+
+// if ($scriptTag_check['src'] === 'eph') {
+
+// }
+
 $script_array = array(
  	"script_tag" => array(
  	"event" => "onload",
@@ -87,6 +94,11 @@ $script_array = array(
 
 $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+
+/*
+if $scriptTag contains ephraim mulilo script tag, dont run
+*/
 
 
 
@@ -117,7 +129,7 @@ $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
     </svg></span><span role="status"><span class="Polaris-VisuallyHidden">Spinner example</span></span></div>
 </div>
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
-
+	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
  	
  </body>
  </html>
