@@ -79,10 +79,10 @@ foreach ($theme as $curr_theme) {
 
 
 //  shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
-$scriptTag_check = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
+$scriptTag_check = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", "GET");
 $scriptTag_check = json_decode($scriptTag_check['response'], JSON_PRETTY_PRINT);
 
-echo $scriptTag_check;
+echo $scriptTag_check['src'];
 
 // if ($scriptTag_check['src'] === 'eph') {
 
