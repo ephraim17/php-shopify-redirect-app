@@ -21,7 +21,7 @@ $array = array(
 		'name' => 'Example Plan',
 		'test' => true,  //remove this line before sending to app store
 		'price' => 15.0,
-		'return_url' => 'https://redirect-to-checkout.myshopify.com/admin/apps/exampleapp-14/?' . $_SERVER['QUERY_STRING']
+		'return_url' => 'https://redirect-to-checkout.myshopify.com/admin/apps/php-my-app/?' . $_SERVER['QUERY_STRING']
 	)
 );
 
