@@ -21,7 +21,7 @@ $array = array(
 		'name' => 'Redirect To Checkout',
 		'test' => true,  //remove this line before sending to app store
 		'price' => 4.99,
-		'return_url' => "https://" . $shop . 'admin/apps/php-my-app/?' . $_SERVER['QUERY_STRING']
+		'return_url' => "https://" . $shop . '/admin/apps/php-my-app/?' . $_SERVER['QUERY_STRING']
 	)
 );
 
