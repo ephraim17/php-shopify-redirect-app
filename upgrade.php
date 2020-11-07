@@ -25,7 +25,7 @@ $array = array(
 	)
 );
 
-$charge = shopify_call($token, $shop, "/admin/api/2019-10/recurring_application_charges.json", $array, 'POST');
+$charge = shopify_call($token, $shop, "/admin/api/2020-04/recurring_application_charges.json", $array, 'POST');
 $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
 
 header('Location: ' . $charge['recurring_application_charge']['confirmation_url'] );
