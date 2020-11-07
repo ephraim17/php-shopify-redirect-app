@@ -18,14 +18,14 @@ $shop = $row['store_url'];
 
 $array = array(
 	'recurring_application_charge' => array(
-		'name' => 'Redirect To Checkout',
+		'name' => 'Example Plan',
 		'test' => true,  //remove this line before sending to app store
-		'price' => 4.99,
-		'return_url' => 'https://' . $shop . '/admin/apps/php-my-app/?' . $_SERVER['QUERY_STRING']
+		'price' => 15.0,
+		'return_url' => 'https://redirect-to-checkout.myshopify.com/admin/apps/exampleapp-14/?' . $_SERVER['QUERY_STRING']
 	)
 );
 
-$charge = shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $array, 'POST');
+$charge = shopify_call($token, $shop, "/admin/api/2019-10/recurring_application_charges.json", $array, 'POST');
 $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
 
 header('Location: ' . $charge['recurring_application_charge']['confirmation_url'] );
