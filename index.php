@@ -107,13 +107,6 @@ if $scriptTag contains ephraim mulilo script tag, dont run
   href="https://unpkg.com/@shopify/polaris@5.0.0/dist/styles.css"
 />
 
-<style>
-.center {
-  text-align: center;
-  top:50%;
-}
-</style>
-
 
  </head>
  <body>
@@ -139,7 +132,7 @@ $(document).read(function(){
 </div>
 
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
-	<button id="click-button"></button>
+	<div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><button type="button" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Start Redirecting</span></span></button></div>
 	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
  	
  </body>
