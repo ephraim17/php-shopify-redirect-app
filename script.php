@@ -28,6 +28,13 @@ $shop = str_replace(".myshopify.com", "", $row['store_url']);
     
     function myFunction(){
 
+        $script_array = array(
+            "script_tag" => array(
+            "event" => "onload",
+            "src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+        )
+       );
+
     $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
     $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
     }
