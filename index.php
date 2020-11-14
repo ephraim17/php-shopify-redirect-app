@@ -80,12 +80,12 @@ foreach ($theme as $curr_theme) {
 
 //  shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
 
-// $scriptTag_check = file_get_contents($token, $shop, "/admin/api/2020-10/script_tags.json?src=https://ephraim17.github.io/ephraim-mulilo/script.js");
-// $scriptTag_check = json_decode($scriptTag_check);
+$scriptTag_checck = file_get_contents($token, $shop, "/admin/api/2020-10/script_tags.json?src=https://ephraim17.github.io/ephraim-mulilo/script.js");
+$scriptTag_checck = json_decode($scriptTag_check);
 
-// echo $scriptTag_check;
+//echo $scriptTag_check;
 
-$scriptTag_checck = 'hi';
+echo empty($scriptTag_checck);
 
 
 
@@ -133,7 +133,7 @@ if $scriptTag contains ephraim mulilo script tag, dont run
  <body>
 
  <div class="center">
- <h1>Redirecting customers....</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
+ <h1>redirecting customers....</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
 </div>
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
 	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
