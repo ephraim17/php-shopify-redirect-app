@@ -87,7 +87,6 @@ foreach ($theme as $curr_theme) {
 
 $scriptTag_checck = 'scripttag check has been echoed and i changed src ';
 echo $scriptTag_checck;
-echo empty($scriptTag_checck);
 
 
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
@@ -99,7 +98,7 @@ if (in_array("https://ephraim17.github.io/ephraim-mulilo/script.js", $ttheme)) {
 	echo 'The script tag does not exist';
 };
 
-// echo print_r($ttheme);
+echo print_r($ttheme['src']);
 
 
 
