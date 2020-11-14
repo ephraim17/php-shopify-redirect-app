@@ -90,7 +90,7 @@ echo $scriptTag_checck;
 echo empty($scriptTag_checck);
 
 
-$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json?src=https://ephraim17.github.io/ephraim-mullilo/script.js", array(), "GET");
+$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
 echo print_r($ttheme);
