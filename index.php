@@ -47,7 +47,7 @@ foreach ($collects as $collect) {
          $title = $products['product']['title'];
 
 	}
-}
+};
 
 // Based on 4th video
 $theme = shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), "GET");
@@ -74,29 +74,31 @@ foreach ($theme as $curr_theme) {
 
 		}
 	}
-}
+};
 
 
 
 //  shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", $script_array, "POST");
-$scriptTag_check = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", "GET");
-$scriptTag_check = json_decode($scriptTag_check['response'], JSON_PRETTY_PRINT);
 
-echo $scriptTag_check['response'];
+$scriptTag_check = file_get_contents($token, $shop, "/admin/api/2020-10/script_tags.json?src=https://ephraim17.github.io/ephraim-mulilo/script.js");
+$scriptTag_check = json_decode($response);
 
-// if ($scriptTag_check['src'] === 'eph') {
 
-// }
 
-$script_array = array(
- 	"script_tag" => array(
- 	"event" => "onload",
- 	"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
- )
-);
+if (!empty($scriptTag_check)) {
 
-$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+	$script_array = array(
+		"script_tag" => array(
+		"event" => "onload",
+		"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+	)
+   );
+   
+   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+   
+
+  }
 
 
 /*
@@ -127,7 +129,7 @@ if $scriptTag contains ephraim mulilo script tag, dont run
  <body>
 
  <div class="center">
- <h1>Now redirecting customers.</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
+ <h1>Now redirecting customers...</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
 </div>
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
 	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
