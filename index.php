@@ -96,11 +96,11 @@ $word = "ephraim17.github.io/ephraimm-mulilo";
 
  
 // Test if string contains the word 
-// if(strpos($ttheme, $word) !== false){
-//     echo "Scripttag fonud! ";
-// } else{
-//     echo "Scripttag not Found! ";
-// };
+if(strpos($ttheme, $word)){
+    echo "Scripttag '$word' fonud! ";
+} else{
+    echo "Scripttag '$word' not Found! ";
+};
 
 
 echo print_r($ttheme);
