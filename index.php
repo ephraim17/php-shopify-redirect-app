@@ -92,7 +92,7 @@ echo $scriptTag_checck;
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "https://ephraim17.github.io/ephraimmmmmm-mulilo/script.js";
+$word = "foxy";
 
  
 // Test if string contains the word 
