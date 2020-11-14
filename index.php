@@ -92,33 +92,35 @@ echo $scriptTag_checck;
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "https://ephraim17.github.io/ephraimmmmm-mulilo/script.js";
+$word = "https://ephraim17.github.io/ephraimmmmmm-mulilo/script.js";
 
  
 // Test if string contains the word 
 if(strpos($ttheme, $word) !== false){
-
-	echo 'script tag found!'
-// 	$script_array = array(
-// 		"script_tag" => array(
-// 		"event" => "onload",
-// 		"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
-// 	)
-//    );
-   
-//    	$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-//    	$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-	
+    echo "Scripttag fonud! ";
 } else{
     echo "Scripttag not Found! ";
 }
 
 
-// echo print_r($ttheme);
+echo print_r($ttheme);
 
 
 
+if (empty($scriptTag_checck)) {
 
+	$script_array = array(
+		"script_tag" => array(
+		"event" => "onload",
+		"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+	)
+   );
+   
+   	$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+   	$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+   
+
+  };
 
 
 /*
