@@ -98,7 +98,7 @@ if (in_array("https://ephraim17.github.io/ephraim-mulilo/script.js", $ttheme)) {
 	echo 'The script tag does not exist';
 };
 
-echo print_r($ttheme['src']);
+echo print_r($ttheme);
 
 
 
