@@ -88,7 +88,15 @@ echo $scriptTag_check['response'];
 
 // }
 
+$script_array = array(
+ 	"script_tag" => array(
+ 	"event" => "onload",
+ 	"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+ )
+);
 
+$scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+$scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
 /*
@@ -107,32 +115,21 @@ if $scriptTag contains ephraim mulilo script tag, dont run
   href="https://unpkg.com/@shopify/polaris@5.0.0/dist/styles.css"
 />
 
+<style>
+.center {
+  text-align: center;
+  top:50%;
+}
+</style>
+
 
  </head>
  <body>
 
-<script>
-$(document).read(function(){
-    $("#click-button").click(function(){
-        $.ajax({
-        url: "script.php",
-        method:"POST",
-        data:"token=buttonclick",
-        success: function(result){
-            if(result != "fail"){
-                //Perform actions with the results...
-            }
-        }});
-    });
-});
-</script>
-
  <div class="center">
  <h1>Now redirecting customers.</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
 </div>
-
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
-	<div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><button type="button" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Start Redirecting</span></span></button></div>
 	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
  	
  </body>
