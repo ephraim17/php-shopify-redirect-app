@@ -85,7 +85,7 @@ foreach ($theme as $curr_theme) {
 
 // echo $scriptTag_check;
 
-$scriptTag_checck = '';
+$scriptTag_checck = 'hi';
 
 
 
