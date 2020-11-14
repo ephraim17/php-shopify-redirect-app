@@ -92,15 +92,15 @@ echo $scriptTag_checck;
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "foxy";
+$word = "ephraim17.github.io/ephraimm-mulilo";
 
  
 // Test if string contains the word 
-if(strpos($ttheme, $word) !== false){
-    echo "Scripttag fonud! ";
-} else{
-    echo "Scripttag not Found! ";
-}
+// if(strpos($ttheme, $word) !== false){
+//     echo "Scripttag fonud! ";
+// } else{
+//     echo "Scripttag not Found! ";
+// };
 
 
 echo print_r($ttheme);
