@@ -102,8 +102,9 @@ if(strpos($ttheme, $word)){
     echo "Scripttag '$word' not Found! ";
 };
 
+echo gettype($$ttheme);
 
-echo print_r($ttheme);
+// echo print_r($ttheme);
 
 
 
