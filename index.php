@@ -152,10 +152,14 @@ if (!$ttheme['script_tags']) {
  <body>
 
  <div class="center">
- <h1>i changed ahgain one more time for the almost last timrtgte. rip english. redirecting customers....</h1><div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><span class="Polaris-Spinner Polaris-Spinner--colorTeal Polaris-Spinner--sizeLarge">
-</div>
+ 
+	 <h1>i changed ahgain one more time for the almost last timrtgte. rip english. redirecting customers....</h1><br>
+	 <p>To use this app, simply click the button below and then visit the front of your store and click "buy it now" as a new user. If you get redirected to your checkout page after registration then, success! If it didn't work then come back here and contact us via the chatbox in the bottom right corner of your screen.</p>
+	 <div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb; --p-frame-offset:0px;"><button type="button" class="Polaris-Button Polaris-Button--sizeLarge Polaris-Button--textAlignCenter"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Start redirecting</span></span></button></div>
+	 </div>
+	 <br>
 	<p>If this application worked for you, then please leave a review so it can help others as well. If you are having problems then please contact us via the chat bot and we will help you out!</p>	 <script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
-	<a href="upgrade.php?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_blank">Upgrade</a>
+	
  	
  </body>
  </html>
