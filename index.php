@@ -103,6 +103,7 @@ $word = "ephraim17.github.io";
 // echo gettype($$ttheme);
 
 echo print_r($ttheme);
+echo empty($ttheme);
 
 
 foreach ($ttheme as $curr_ttheme) {
