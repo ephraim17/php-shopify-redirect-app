@@ -88,24 +88,25 @@ foreach ($theme as $curr_theme) {
 $scriptTag_checck = 'scripttag check has been echoed and i changed src ';
 echo $scriptTag_checck;
 
+// /admin/api/2020-10/script_tags.json?src=https://js-aplenty.com/foo.js
 
-$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
+
+$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json?src=https://ephraim17.github.io/ephraimm-mulilo/script.js", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "ephraim17.github.io/ephraimm-mulilo";
+$word = "ephraim17.github.io/ephraimm-mulilo/script.js";
 
  
-// Test if string contains the word 
-if(strpos($ttheme, $word)){
-    echo "Scripttag '$word' fonud! ";
-} else{
-    echo "Scripttag '$word' not Found! ";
-};
+// // Test if string contains the word 
+// if(strpos($ttheme, $word)){
+//     echo "Scripttag '$word' fonud! ";
+// } else{
+//     echo "Scripttag '$word' not Found! ";
+// };
 
-echo gettype($$ttheme);
+// echo gettype($$ttheme);
 
-// echo print_r($ttheme);
-
+echo print_r($ttheme);
 
 
 if (empty($scriptTag_checck)) {
