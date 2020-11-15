@@ -84,10 +84,6 @@ foreach ($theme as $curr_theme) {
 // $scriptTag_checck = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 //echo $scriptTag_check;
-
-$scriptTag_checck = 'scripttag check has been echoed and i changed src ';
-echo $scriptTag_checck;
-
 // /admin/api/2020-10/script_tags.json?src=https://js-aplenty.com/foo.js
 
 
@@ -112,6 +108,8 @@ if (in_array($word, $ttheme)) {
 
 // echo print_r($ttheme);
 
+$scriptTag_checck = '';
+echo $scriptTag_checck;
 
 if (empty($scriptTag_checck)) {
 
