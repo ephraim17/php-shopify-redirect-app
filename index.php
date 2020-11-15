@@ -105,7 +105,15 @@ $word = "ephraim17.github.io";
 echo print_r($ttheme['script_tags']);
 
 if (!$ttheme['script_tags']) {
-	echo "Variable 'ttheme' is empty.<br>";
+	$script_array = array(
+		"script_tag" => array(
+		"event" => "onload",
+		"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+	)
+   );
+   
+	   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+	   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
   } else {
 	  echo 'Its not empty';
   };
