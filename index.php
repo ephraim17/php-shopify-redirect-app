@@ -102,9 +102,9 @@ $word = "ephraim17.github.io";
 
 // echo gettype($$ttheme);
 
-echo print_r($ttheme);
+echo print_r($ttheme['script_tags']);
 
-if (!$ttheme) {
+if (!$ttheme['script_tags']) {
 	echo "Variable 'ttheme' is empty.<br>";
   } else {
 	  echo 'Its not empty';
