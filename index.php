@@ -88,7 +88,7 @@ foreach ($theme as $curr_theme) {
 
 
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
-// $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
+$ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
 $word = "ephraim17.github.io";
 
