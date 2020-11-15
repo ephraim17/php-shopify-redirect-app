@@ -106,7 +106,7 @@ if (in_array($word, $ttheme)) {
     echo "Script tag exists in this array ";
 }
 
-echo print_r($ttheme);
+echo print_r($ttheme['script_tags']);
 
 
 $scriptTag_checck = 'ok what if i remove the array() :/';
