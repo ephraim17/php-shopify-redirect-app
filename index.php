@@ -108,10 +108,10 @@ if (!$ttheme['script_tags']) {
 
 	if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
 
-		echo 'the script tag exists';
+		echo 'Please leave a review to support the developer of this app';
 
 	} else {
-		echo 'the script tag does not exist';
+		echo 'Please leave a review to support the developer of this app';
 
 		$script_array = array(
 			"script_tag" => array(
