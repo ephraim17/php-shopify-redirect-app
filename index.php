@@ -102,11 +102,19 @@ $word = "ephraim17.github.io";
 
 // echo gettype($$ttheme);
 
-if (in_array($word, $ttheme)) {
-    echo "Script tag exists in this array ";
-}
+echo print_r($ttheme);
 
-echo print_r($ttheme['script_tags']);
+
+foreach ($ttheme as $curr_ttheme) {
+	foreach($curr_ttheme as $kkey => $vvalue) {
+		if($vvalue['src'] === 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
+
+			echo 'idk wtf im doing, but it worked ';
+		} else
+
+		echo 'you dont know wtf ur doing and it didnt work ';
+	}
+};
 
 
 $scriptTag_checck = 'ok what if i remove the array() :/';
