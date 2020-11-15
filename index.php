@@ -90,7 +90,7 @@ foreach ($theme as $curr_theme) {
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-if (!$ttheme['script_tags']) {
+function placeScript() {
 
 	$script_array = array(
 		"script_tag" => array(
@@ -101,6 +101,12 @@ if (!$ttheme['script_tags']) {
    
 	   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 	   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+  };
+
+if (!$ttheme['script_tags']) {
+
+	placeScript();
 
   } else {
 
@@ -113,15 +119,7 @@ if (!$ttheme['script_tags']) {
 	} else {
 		echo 'Please leave a review to support the developer of this app';
 
-		$script_array = array(
-			"script_tag" => array(
-			"event" => "onload",
-			"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
-		)
-	   );
-	   
-		   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-		   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+		placeScript();
 
 	};
   };
@@ -175,7 +173,7 @@ if (!$ttheme['script_tags']) {
             <div class="Polaris-Card Polaris-Card--newDesignLanguage">
               <div class="Polaris-Card__Section">
                 <div class="Polaris-SettingAction">
-                  <div class="Polaris-SettingAction__Setting">Redirecting is <span class="Polaris-TextStyle--variationStrong">enabled</span>. To test, click "buy it now" on a product and do the checkout process as new user on your store.</div>
+                  <div class="Polaris-SettingAction__Setting">Redirecting is <span class="Polaris-TextStyle--variationStrong">enabled</span>.</div>
                   <div class="Polaris-SettingAction__Action"><button type="button" class="Polaris-Button Polaris-Button--newDesignLanguage Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span></button></div>
                 </div>
               </div>
@@ -186,6 +184,6 @@ if (!$ttheme['script_tags']) {
     </div>
   </div>
 </div>
- 	<script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
+ 	
  </body>
  </html>
