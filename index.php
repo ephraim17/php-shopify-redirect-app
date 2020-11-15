@@ -104,8 +104,10 @@ $word = "ephraim17.github.io";
 
 // echo print_r($ttheme);
 
-if (empty($ttheme)) {
+if (!$ttheme) {
 	echo "Variable 'ttheme' is empty.<br>";
+  } else {
+	  echo 'Its not empty';
   };
 
 
