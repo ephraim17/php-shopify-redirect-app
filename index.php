@@ -103,7 +103,10 @@ $word = "ephraim17.github.io";
 // echo gettype($$ttheme);
 
 // echo print_r($ttheme);
-echo empty($ttheme);
+
+if (empty($ttheme)) {
+	echo "Variable 'ttheme' is empty.<br>";
+  };
 
 
 foreach ($ttheme as $curr_ttheme) {
