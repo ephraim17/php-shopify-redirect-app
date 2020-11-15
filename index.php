@@ -122,7 +122,7 @@ foreach ($ttheme as $curr_ttheme) {
 		}
 		
 		
-};
+}};
 
 
 echo gettype($ttheme)."\n"; 
