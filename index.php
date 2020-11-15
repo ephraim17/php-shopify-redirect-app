@@ -94,7 +94,7 @@ echo $scriptTag_checck;
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "ephraim17.github.io/ephraimm-mulilo/script.js";
+$word = "ephraim17.github.io";
 
  
 // // Test if string contains the word 
@@ -106,7 +106,11 @@ $word = "ephraim17.github.io/ephraimm-mulilo/script.js";
 
 // echo gettype($$ttheme);
 
-echo print_r($ttheme);
+if (in_array($word, $ttheme)) {
+    echo "Script tag exists in this array ";
+}
+
+// echo print_r($ttheme);
 
 
 if (empty($scriptTag_checck)) {
