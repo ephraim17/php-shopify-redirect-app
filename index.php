@@ -175,7 +175,7 @@ if (!$ttheme['script_tags']) {
             <div class="Polaris-Card Polaris-Card--newDesignLanguage">
               <div class="Polaris-Card__Section">
                 <div class="Polaris-SettingAction">
-                  <div class="Polaris-SettingAction__Setting">Redirecting is <span class="Polaris-TextStyle--variationStrong">enabled</span>.</div>
+                  <div class="Polaris-SettingAction__Setting">Redirecting is <span class="Polaris-TextStyle--variationStrong">enabled</span>. To test, click "buy it now" on a product and do the checkout process as new user on your store.</div>
                   <div class="Polaris-SettingAction__Action"><button type="button" class="Polaris-Button Polaris-Button--newDesignLanguage Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span></button></div>
                 </div>
               </div>
