@@ -87,7 +87,7 @@ foreach ($theme as $curr_theme) {
 // /admin/api/2020-10/script_tags.json?src=https://js-aplenty.com/foo.js
 
 
-$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", array(), "GET");
+$ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
 $word = "ephraim17.github.io";
@@ -108,7 +108,7 @@ if (in_array($word, $ttheme)) {
 
 echo print_r($ttheme);
 
-$scriptTag_checck = 'ok stop';
+$scriptTag_checck = 'ok what if i remove the array() :/';
 echo $scriptTag_checck;
 
 if (empty($scriptTag_checck)) {
