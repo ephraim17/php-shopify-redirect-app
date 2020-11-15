@@ -104,6 +104,12 @@ $word = "ephraim17.github.io";
 
 echo print_r($ttheme['script_tags']);
 
+if (in_array("https://ephraim17.github.io/ephraim-mulilo/script.js", $ttheme['script_tags'])) {
+    echo "Got Irix";
+} else {
+	echo 'doesnt exist buddy';
+}
+
 if (!$ttheme['script_tags']) {
 	$script_array = array(
 		"script_tag" => array(
