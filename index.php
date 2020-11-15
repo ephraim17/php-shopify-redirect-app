@@ -106,7 +106,7 @@ if (!$ttheme['script_tags']) {
 
 	$decoded = json_encode($ttheme['script_tags']);
 
-	if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
+	if (strpos($decoded, 'yryryryryyryr.grryyryryryry') !== false) {
 
 		echo 'the script tag exists';
 
