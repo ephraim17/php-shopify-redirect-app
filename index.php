@@ -142,6 +142,8 @@ if (!$ttheme['script_tags']) {
 .center {
   text-align: center;
   top:50%;
+  margin-right: 150px;
+  margin-left: 80px;
 }
 </style>
 
