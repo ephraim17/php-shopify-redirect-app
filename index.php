@@ -103,13 +103,14 @@ $word = "ephraim17.github.io";
 // echo gettype($$ttheme);
 
 echo print_r($ttheme['script_tags']);
-echo json_encode($ttheme['script_tags']);
+$decoded = json_encode($ttheme['script_tags']);
 
-if (in_array("https://ephraim17.github.io/ephraim-mulilo/script.js", $ttheme['script_tags'])) {
-    echo "Got Irix";
+if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
+    echo 'the script tag exists';
 } else {
-	echo 'doesnt exist buddy';
-}
+	echo 'the script tag does not exist';
+};
+
 
 if (!$ttheme['script_tags']) {
 	$script_array = array(
