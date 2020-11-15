@@ -90,7 +90,8 @@ foreach ($theme as $curr_theme) {
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-function placeScript() {
+
+if (!$ttheme['script_tags']) {
 
 	$script_array = array(
 		"script_tag" => array(
@@ -101,12 +102,6 @@ function placeScript() {
    
 	   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 	   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-
-  };
-
-if (!$ttheme['script_tags']) {
-
-	placeScript();
 
   } else {
 
@@ -119,7 +114,15 @@ if (!$ttheme['script_tags']) {
 	} else {
 		echo 'Please leave a review to support the developer of this app';
 
-		placeScript();
+		$script_array = array(
+			"script_tag" => array(
+			"event" => "onload",
+			"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+		)
+	   );
+	   
+		   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+		   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 	};
   };
