@@ -186,6 +186,6 @@ if (!$ttheme['script_tags']) {
     </div>
   </div>
 </div>
- 	
+ 	<script src="//code.tidio.co/emvrdv8i57vs6jajetqwiei3azx8t5wf.js" async></script>
  </body>
  </html>
