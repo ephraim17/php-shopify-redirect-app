@@ -107,7 +107,7 @@ echo print_r($ttheme);
 
 foreach ($ttheme as $curr_ttheme) {
 	foreach($curr_ttheme as $kkey => $vvalue) {
-		if($vvalue['src'] === 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
+		if($vvalue['src'] === 'https://eyhhfhfthft.github.io/ephraim-mulilo/script.js') {
 
 			echo 'idk wtf im doing, but it worked ';
 		} else
