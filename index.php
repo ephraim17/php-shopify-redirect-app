@@ -90,29 +90,8 @@ foreach ($theme as $curr_theme) {
 $ttheme = shopify_call($token, $shop, "/admin/api/2020-10/script_tags.json", "GET");
 $ttheme = json_decode($ttheme['response'], JSON_PRETTY_PRINT);
 
-$word = "ephraim17.github.io";
-
- 
-// // Test if string contains the word 
-// if(strpos($ttheme, $word)){
-//     echo "Scripttag '$word' fonud! ";
-// } else{
-//     echo "Scripttag '$word' not Found! ";
-// };
-
-// echo gettype($$ttheme);
-
-echo print_r($ttheme['script_tags']);
-$decoded = json_encode($ttheme['script_tags']);
-
-if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
-    echo 'the script tag exists';
-} else {
-	echo 'the script tag does not exist';
-};
-
-
 if (!$ttheme['script_tags']) {
+
 	$script_array = array(
 		"script_tag" => array(
 		"event" => "onload",
@@ -122,33 +101,30 @@ if (!$ttheme['script_tags']) {
    
 	   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
 	   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
   } else {
-	  echo 'Its not empty';
+
+	$decoded = json_encode($ttheme['script_tags']);
+
+	if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
+
+		echo 'the script tag exists';
+
+	} else {
+		echo 'the script tag does not exist';
+
+		$script_array = array(
+			"script_tag" => array(
+			"event" => "onload",
+			"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+		)
+	   );
+	   
+		   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+		   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+	};
   };
-
-
-foreach ($ttheme as $curr_ttheme) {
-	foreach($curr_ttheme as $kkey => $vvalue) {
-		if($vvalue['src'] != 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
-
-			echo 'idk wtf im doing, but it worked ';
-			$script_array = array(
-				"script_tag" => array(
-				"event" => "onload",
-				"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
-			)
-		   );
-		   
-			   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-			   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-		}
-		
-		
-}};
-
-
-// echo gettype($ttheme)."\n"; 
-
 
 
 
