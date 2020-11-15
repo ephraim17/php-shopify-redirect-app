@@ -108,10 +108,10 @@ if (!$ttheme['script_tags']) {
 
 	if (strpos($decoded, 'ephraim17.github.io\/ephraim-mulilo\/script.js') !== false) {
 
-		$nothingggg = 'nothing';
+		echo 'the script tag exists';
 
 	} else {
-		// echo 'the script tag does not exist';
+		echo 'the script tag does not exist';
 
 		$script_array = array(
 			"script_tag" => array(
@@ -189,91 +189,3 @@ if (!$ttheme['script_tags']) {
  	
  </body>
  </html>
-<?php 
-2
-require_once("inc/functions.php");
-3
-require_once("inc/connect.php");
-4
-​
-5
-​
-6
-$requests = $_GET;
-7
-$hmac = $_GET['hmac'];
-8
-$serializeArray = serialize($requests);
-9
-$requests = array_diff_key($requests, array( 'hmac' => '' ));
-10
-ksort($requests);
-11
-​
-12
-$sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
-13
-$result = mysqli_query( $conn, $sql );
-14
-$row = mysqli_fetch_assoc($result);
-15
-​
-16
-$var = "Hello, I am string using replaced ";
-17
-​
-18
-$token = $row['access_token'];
-19
-$shop = str_replace(".myshopify.com", "", $row['store_url']);
-20
-​
-21
-if (empty($token)) {
-22
-        header("Location: install.php?shop=" . $requests['shop']);
-23
-​
-24
-  };
-25
-​
-26
-//Product and Product Images
-27
-$image = "";
-28
-$title = "";
-29
-​
-30
-$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
-31
-$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
-32
-$collection_id = $collectionList['custom_collections'][0]['id'];
-33
-​
-34
-$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
-35
-$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
-36
-​
-37
-foreach ($collects as $collect) {
-38
-        foreach($collect as $key => $value) {
-39
-                $products = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . ".json", array(), "GET");
-40
-                $products = json_decode($products['response'], JSON_PRETTY_PRINT);
-41
-​
-42
-                $images = shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['product_id'] . "/images.json", array(), "GET");
-43
-                $images = json_decode($images['response'], JSON_PRETTY_PRINT);
-44
-​
-45
