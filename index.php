@@ -106,7 +106,7 @@ if (in_array($word, $ttheme)) {
     echo "Script tag exists in this array ";
 }
 
-// echo print_r($ttheme);
+echo print_r($ttheme);
 
 $scriptTag_checck = 'ok stop';
 echo $scriptTag_checck;
