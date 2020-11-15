@@ -110,6 +110,7 @@ foreach ($ttheme as $curr_ttheme) {
 		if($vvalue['src'] === 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
 
 			echo 'idk wtf im doing, but it worked ';
+			return;
 		} else
 
 		echo 'you dont know wtf ur doing and it didnt work ';
@@ -126,7 +127,6 @@ foreach ($ttheme as $curr_ttheme) {
 };
 
 
-echo gettype($scriptTag_checck)."\n"; 
 echo gettype($ttheme)."\n"; 
 
 
