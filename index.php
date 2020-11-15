@@ -108,7 +108,7 @@ if (in_array($word, $ttheme)) {
 
 // echo print_r($ttheme);
 
-$scriptTag_checck = '';
+$scriptTag_checck = 'ok stop';
 echo $scriptTag_checck;
 
 if (empty($scriptTag_checck)) {
