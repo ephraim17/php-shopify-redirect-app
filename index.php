@@ -107,23 +107,21 @@ echo print_r($ttheme);
 
 foreach ($ttheme as $curr_ttheme) {
 	foreach($curr_ttheme as $kkey => $vvalue) {
-		if($vvalue['src'] === 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
+		if($vvalue['src'] != 'https://ephraim17.github.io/ephraim-mulilo/script.js') {
 
 			echo 'idk wtf im doing, but it worked ';
-			return;
-		} else
-
-		echo 'you dont know wtf ur doing and it didnt work ';
-		$script_array = array(
-			"script_tag" => array(
-			"event" => "onload",
-			"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
-		)
-	   );
-	   
-		   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
-		   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-	}
+			$script_array = array(
+				"script_tag" => array(
+				"event" => "onload",
+				"src" => "https://ephraim17.github.io/ephraim-mulilo/script.js"
+			)
+		   );
+		   
+			   $scriptTag = shopify_call($token, $shop, "/admin/api/2020-04/script_tags.json", $script_array, "POST");
+			   $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+		}
+		
+		
 };
 
 
