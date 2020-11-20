@@ -23,6 +23,10 @@ if (empty($token)) {
 
   };
 
+
+  echo $_SERVER['HTTP_REFERER'];
+  echo 'that was the referrer';
+
 //Product and Product Images
 $image = "";
 $title = "";
