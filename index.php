@@ -25,7 +25,7 @@ if (empty($token)) {
 
 
   echo $_SERVER['HTTP_REFERER'];
-  echo 'that was the referrer';
+  echo 'that was the update referrer';
 
 //Product and Product Images
 $image = "";
