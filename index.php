@@ -4,6 +4,7 @@ require_once("inc/connect.php");
 
 
 $requests = $_GET;
+$installshop = $_GET['shop'];
 $hmac = $_GET['hmac'];
 $serializeArray = serialize($requests);
 $requests = array_diff_key($requests, array( 'hmac' => '' ));
@@ -19,13 +20,13 @@ $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 if (empty($token)) {
-	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $requests['shop']);
+	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
 
   };
 
 
   echo $_SERVER['HTTP_REFERER'];
-  echo 'that was the update referrer';
+  echo 'that was the referrer';
 
 //Product and Product Images
 $image = "";
