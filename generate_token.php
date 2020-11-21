@@ -4,6 +4,10 @@
 require_once("inc/functions.php");
 require_once("inc/connect.php");
 
+//Where the fuck did we come from?
+$_SESSION['page'] = $_SERVER['HTTP_REFERER'];
+echo $_SESSION['page'];
+
 // Set variables for our request
 $api_key = getenv('SHOPIFY_API_KEY');
 $shared_secret = getenv('SHOPIFY_SHARED_SECRET');
