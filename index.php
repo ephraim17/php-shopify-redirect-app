@@ -19,10 +19,8 @@ $row = mysqli_fetch_assoc($result);
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-echo $token;
 echo $shop;
 echo $installshop;
-echo $_GET['shop'];
 
 
 // if (empty($token)) {
