@@ -22,7 +22,7 @@ $shop = str_replace(".myshopify.com", "", $row['store_url']);
 echo $shop;
 echo $installshop;
 echo isset($shop);
-echo empty($shop);
+// echo empty($shop);
 
 
 
