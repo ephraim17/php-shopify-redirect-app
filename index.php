@@ -23,6 +23,11 @@ $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 echo $requests = array_diff_key($requests, array( 'hmac' => '' ));
 
+if (empty($token)) {
+	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
+  };
+
+
   echo $_SERVER['HTTP_REFERER'];
   echo 'that was the referrer';
 
