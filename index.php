@@ -20,7 +20,7 @@ $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 
-echo $_GET;
+echo $installshop = $_GET['shop'];
 
 if (empty($token)) {
 	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
