@@ -1,3 +1,4 @@
+
 <?php 
 require_once("inc/functions.php");
 require_once("inc/connect.php");
@@ -20,7 +21,7 @@ $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 
-echo $installshop = $_GET['shop'];
+echo $requests = array_diff_key($requests, array( 'hmac' => '' ));
 
 if (empty($token)) {
 	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
