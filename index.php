@@ -19,6 +19,9 @@ $var = "Hello, I am string using replaced ";
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
+
+echo $_GET;
+
 if (empty($token)) {
 	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
 
