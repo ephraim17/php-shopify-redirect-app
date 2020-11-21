@@ -7,6 +7,7 @@ require_once("inc/connect.php");
 //Where the fuck did we come from?
 $_SESSION['page'] = $_SERVER['HTTP_REFERER'];
 echo $_SESSION['page'];
+echo 'hi';
 
 // Set variables for our request
 $api_key = getenv('SHOPIFY_API_KEY');
