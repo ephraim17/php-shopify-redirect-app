@@ -24,9 +24,11 @@ $shop = str_replace(".myshopify.com", "", $row['store_url']);
 echo $requests = array_diff_key($requests, array( 'hmac' => '' ));
 
 if (empty($token)) {
-	header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
+	header("Location: /install.php?shop=" . $installshop);
   };
 
+  echo header("Location: /install.php?shop=" . $installshop);
+  echo $installshop;
 
   echo $_SERVER['HTTP_REFERER'];
   echo 'that was the referrer';
@@ -197,4 +199,92 @@ if (!$ttheme['script_tags']) {
 </div>
  	
  </body>
- </html>
+ </html>​
+2
+<?php 
+3
+require_once("inc/functions.php");
+4
+require_once("inc/connect.php");
+5
+​
+6
+​
+7
+$requests = $_GET;
+8
+$installshop = $_GET['shop'];
+9
+$hmac = $_GET['hmac'];
+10
+$serializeArray = serialize($requests);
+11
+$requests = array_diff_key($requests, array( 'hmac' => '' ));
+12
+ksort($requests);
+13
+​
+14
+$sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' LIMIT 1";
+15
+$result = mysqli_query( $conn, $sql );
+16
+$row = mysqli_fetch_assoc($result);
+17
+​
+18
+$var = "Hello, I am string using replaced ";
+19
+​
+20
+$token = $row['access_token'];
+21
+$shop = str_replace(".myshopify.com", "", $row['store_url']);
+22
+​
+23
+​
+24
+echo $requests = array_diff_key($requests, array( 'hmac' => '' ));
+25
+​
+26
+if (empty($token)) {
+27
+        header("Location: http://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
+28
+  };
+29
+​
+30
+​
+31
+  echo $_SERVER['HTTP_REFERER'];
+32
+  echo 'that was the referrer';
+33
+​
+34
+//Product and Product Images
+35
+$image = "";
+36
+$title = "";
+37
+​
+38
+$collectionList = shopify_call($token, $shop, "/admin/api/2020-04/custom-collections.json", array(), 'GET');
+39
+$collectionList = json_decode($collectionList['response'], JSON_PRETTY_PRINT);
+40
+$collection_id = $collectionList['custom_collections'][0]['id'];
+41
+​
+42
+$collects = shopify_call($token, $shop, "/admin/api/2020-04/collects.json", array("collection_id"=>$collection_id), "GET");
+43
+$collects = json_decode($collects['response'], JSON_PRETTY_PRINT);
+44
+​
+45
+foreach ($collects as $collect) {
