@@ -1,8 +1,6 @@
 <?php
-
 require_once("inc/functions.php");
 require_once("inc/connect.php");
-
 
 $requests = $_GET;
 $installshop = $_GET['shop'];
@@ -21,6 +19,13 @@ $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
 
+$installshop = $_GET['shop'];
+
+if ($token) {
+	header('Location: https://'.$installshop.'/admin/apps/php-my-app');
+  };
+
+
 // Set variables for our request
 $shop = $_GET['shop'];
 $api_key = getenv('SHOPIFY_API_KEY');
@@ -29,16 +34,8 @@ $redirect_uri = "https://auto-redirector-pro.herokuapp.com/generate_token.php";
 
 // Build install/approval URL to redirect to
 $install_url = "https://" . $shop . "/admin/oauth/authorize?client_id=" . $api_key . "&scope=" . $scopes . "&redirect_uri=" . urlencode($redirect_uri);
-$app_url = "https://" . $shop . "/admin/apps/php-my-app";
 
-if (empty($token)) {
+// Redirect
 
-    header("Location: " . $install_url);
-    
-  } else {
-
-    header("Location: " . $app_url);
-
-  };
-
+header("Location: " . $install_url);
 die();
