@@ -4,10 +4,7 @@
 require_once("inc/functions.php");
 require_once("inc/connect.php");
 
-//Where the fuck did we come from?
-$_SESSION['page'] = $_SERVER['HTTP_REFERER'];
-echo $_SESSION['page'];
-echo 'hi';
+
 
 // Set variables for our request
 $api_key = getenv('SHOPIFY_API_KEY');
@@ -67,5 +64,10 @@ if (hash_equals($hmac, $computed_hmac)) {
 
 } else {
 	// Someone is trying to be shady!
+	//Where the fuck did we come from?
+
+	$_SESSION['page'] = $_SERVER['HTTP_REFERER'];
+	echo $_SESSION['page'];
+	echo 'hi';
 	die('This request is NOT from Shopify!');
 }
