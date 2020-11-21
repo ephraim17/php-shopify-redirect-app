@@ -15,24 +15,15 @@ $sql = "SELECT * FROM example_table WHERE store_url='" . $requests['shop'] . "' 
 $result = mysqli_query( $conn, $sql );
 $row = mysqli_fetch_assoc($result);
 
-$var = "Hello, I am string using replaced ";
 
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
+// if (empty($token)) {
+//   header("Location: http:/auto-redirector-pro.herokuapp.com/install.php?shop=bdf-center.myshopify.com");
+//   exit;
+//   };
 
-echo $requests = array_diff_key($requests, array( 'hmac' => '' ));
-
-if (empty($token)) {
-  header("Location: http:/auto-redirector-pro.herokuapp.com/install.php?shop=bdf-center.myshopify.com");
-  exit;
-  };
-
-  echo header("Location: /install.php?shop=" . $installshop);
-  echo $installshop;
-
-  echo $_SERVER['HTTP_REFERER'];
-  echo 'that was the referrer';
 
 //Product and Product Images
 $image = "";
