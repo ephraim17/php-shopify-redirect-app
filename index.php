@@ -1,4 +1,3 @@
-
 <?php 
 require_once("inc/functions.php");
 require_once("inc/connect.php");
@@ -19,7 +18,7 @@ $row = mysqli_fetch_assoc($result);
 $token = $row['access_token'];
 $shop = str_replace(".myshopify.com", "", $row['store_url']);
 
-if (empty($shop) {
+if (empty($shop)) {
 	header("Location: https://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
 	exit();
 };
