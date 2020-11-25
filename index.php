@@ -22,7 +22,7 @@ $shop = str_replace(".myshopify.com", "", $row['store_url']);
 if (empty($shop) {
 	header("Location: https://auto-redirector-pro.herokuapp.com/install.php?shop=" . $installshop);
 	exit();
-}
+};
 
 
 
